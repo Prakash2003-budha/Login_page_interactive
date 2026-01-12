@@ -1,0 +1,315 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Headings */
+.heading {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+}
+
+/* Page layout */
+.hello {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background-image: url('./anime-boy-chill-digital-art-4k-wallpaper-uhdpaper.com-284@0@j.jpg');
+  background-position: center;
+  background-size: cover;      
+}
+
+.one {
+  width: 40%;
+  height: 70%;
+  background-color: blue;
+  border-radius: 20px;
+}
+
+.two {
+  width: 40%;
+  height: 70%;
+  background-color: rgb(0, 255, 255);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #0000ff80;
+}
+
+/* Input container */
+.inputmain {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Floating input */
+.field {
+  position: relative;
+  width: 80%;
+  
+}
+
+.field input {  
+  width: 90%;
+  padding: 14px 10px 10px;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid black;
+  outline: none;
+  justify-content: center;
+  align-items: center;
+
+}
+
+/* Label */
+.field label {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #333;
+  pointer-events: none;
+  transition: 0.3s ease;
+  padding: 2px 1px;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Floating effect */
+.field input:focus + label,
+.field input:valid + label {
+  top: -6px;
+  font-size: 12px;
+}
+
+/* Focus border */
+.field input:focus {
+  border-color: green;
+}
+
+/* Buttons */
+.login_button,
+.Sign_up {
+  width: 80%;
+  height: 40px;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: darkgreen;
+  color: white;
+  cursor: pointer;
+}
+
+.login_button:hover,
+.Sign_up:hover {
+  background-color: green;
+}
+
+.forgot {
+  color: white;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.forgot:hover {
+  color: red;
+  text-decoration: underline;
+}
+.cartoon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;    
+  position: relative;
+  margin: 20px auto;
+  border-radius: 50%;
+  animation: body-bounce 0.6s infinite ease-in-out;
+
+}
+@keyframes body-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.left-arm {
+  left: -40px;
+  transform-origin: right center;
+  animation: left-arm-run 0.6s infinite ease-in-out;
+}
+
+.right-arm {
+  right: -40px;
+  transform-origin: left center;
+  animation: right-arm-run 0.6s infinite ease-in-out;
+}
+
+@keyframes left-arm-run {
+  0% { transform: rotate(-25deg); }
+  50% { transform: rotate(20deg); }
+  100% { transform: rotate(-25deg); }
+}
+
+@keyframes right-arm-run {
+  0% { transform: rotate(25deg); }
+  50% { transform: rotate(-20deg); }
+  100% { transform: rotate(25deg); }
+}
+
+
+.left-leg {
+  transform-origin: top center;
+  animation: left-leg-run 0.6s infinite ease-in-out;
+}
+
+.right-leg {
+  transform-origin: top center;
+  animation: right-leg-run 0.6s infinite ease-in-out;
+}
+
+@keyframes left-leg-run {
+  0% { transform: rotate(20deg); }
+  50% { transform: rotate(-20deg); }
+  100% { transform: rotate(20deg); }
+}
+
+@keyframes right-leg-run {
+  0% { transform: rotate(-20deg); }
+  50% { transform: rotate(20deg); }
+  100% { transform: rotate(-20deg); }
+}
+
+
+
+
+
+.head_cartoon {
+  width: 180px;
+  height: 180px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+}
+
+.neck {
+  width: 30px;
+  height: 20px;
+  background: #f0f8ff;
+  margin: -5px auto;
+  border-radius: 10px;
+}
+
+
+/* Eyes */
+.eye {
+  position: relative;     
+  width: 80px;            /* bigger eyes */
+  height: 80px;
+  background: white;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  margin: 0 10px;   /* space between eyes */
+  transition: transform 0.3s ease;
+  
+  /* Eye shadow */
+  box-shadow: 
+    0 3px 5px rgba(0, 0, 0, 0.5),    /* outer shadow */
+    inset 0 -2px 3px rgba(255, 255, 255, 0.3); /* inner highlight */      
+}
+
+/* Pupils */
+.pupil {
+  width: 25px;             /* bigger pupils */
+  height: 25px;
+  background: black;
+  border-radius: 50%;
+  position: relative; 
+  transition: transform 0.2s ease-out;   
+  
+  /* Pupil shadow for depth */
+  box-shadow: 
+    0 3px 5px rgba(0, 0, 0, 0.5),   /* outer shadow */
+    inset 0 -2px 3px rgba(255, 255, 255, 0.3); /* highlight */
+  
+  transform: translate(0, 0); 
+}
+.arm {
+  width: 50px;
+  height: 16px;
+  background: #3b2a10;
+  position: absolute;
+  top: 40px;
+  border-radius: 10px;
+}
+
+.left-arm {
+  left: -40px;
+  transform: rotate(-20deg);
+}
+
+.right-arm {
+  right: -40px;
+  transform: rotate(20deg);
+}
+
+.body_cartoon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.fullbody {
+  width: 120px;
+  height: 140px;
+  background: #eaf6ff;
+  border-radius: 50px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+
+.legs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: -5px;
+}
+
+.leg {
+  width: 24px;
+  height: 70px;
+  background: #2c2c2c;
+  border-radius: 12px;
+  position: relative;
+}
+
+.leg::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: -6px;
+  width: 36px;
+  height: 14px;
+  background: black;
+  border-radius: 10px;
+}

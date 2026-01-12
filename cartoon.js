@@ -1,75 +1,73 @@
-// Select eyes and pupils
+// Select cartoon and eyes
+const cartoon = document.querySelector('.cartoon');
 const eyes = document.querySelectorAll(".eye");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
 
-// Track mouse only when email input is focused
-let followMouse = true;
+let followMouse = true; // Track if pupils follow the mouse
+const pupilMaxMove = 15; // max distance pupil can move inside eye
 
-// Mouse movement event
+// Pupils follow mouse when allowed
 document.addEventListener("mousemove", (event) => {
-  if (!followMouse) return; // ignore mouse if password input is focused
+  if (!followMouse) return;
 
   const mouseX = event.clientX;
   const mouseY = event.clientY;
 
   eyes.forEach((eye) => {
     const pupil = eye.querySelector(".pupil");
-
-    // Eye center coordinates
     const rect = eye.getBoundingClientRect();
     const eyeCenterX = rect.left + rect.width / 2;
     const eyeCenterY = rect.top + rect.height / 2;
 
-    // Angle between eye center and mouse
     const dx = mouseX - eyeCenterX;
     const dy = mouseY - eyeCenterY;
 
-    const radius = 20; // max pupil movement
     const angle = Math.atan2(dy, dx);
-    const x = radius * Math.cos(angle);
-    const y = radius * Math.sin(angle);
+    const x = pupilMaxMove * Math.cos(angle);
+    const y = pupilMaxMove * Math.sin(angle);
 
     pupil.style.transform = `translate(${x}px, ${y}px)`;
   });
 });
 
-// Email input focused → pupils follow cursor
-emailInput.addEventListener("focus", () => {
-  followMouse = true;
+// Function to reset pupils to center
+function resetPupils() {
   eyes.forEach((eye) => {
     const pupil = eye.querySelector(".pupil");
-    pupil.style.display = "block"; // show pupils
     pupil.style.transform = "translate(0, 0)";
-
-    // Restore eye shape
-    eye.style.height = "80px";
-    eye.style.borderRadius = "50%";
   });
-});
+}
 
-// Password input focused → eyes look left
-passwordInput.addEventListener("focus", () => {
-  followMouse = false;
+// Input focus → stop animations + adjust pupils
+function handleFocus(isEmail) {
+  followMouse = isEmail; // pupils follow only if email input
+  cartoon.classList.add('stop-running'); // stops body, arms, legs
+  cartoon.classList.toggle('email-focused', isEmail);
+  cartoon.classList.toggle('password-focused', !isEmail);
 
-  eyes.forEach((eye) => {
-    const pupil = eye.querySelector(".pupil");
-    pupil.style.display = "block"; // keep pupils visible
+  if (!isEmail) {
+    // password → pupils look left
+    eyes.forEach((eye) => {
+      const pupil = eye.querySelector(".pupil");
+      pupil.style.transform = `translate(-${pupilMaxMove}px, 0)`;
+    });
+  } else {
+    // email → reset pupils
+    resetPupils();
+  }
+}
 
-    // Move pupils left
-    pupil.style.transform = `translate(-20px, 0)`; // 20px left
-  });
-});
+// Input blur → resume animations + reset pupils
+function handleBlur() {
+  cartoon.classList.remove('stop-running', 'email-focused', 'password-focused');
+  resetPupils();
+}
 
-// Reset when password loses focus
-passwordInput.addEventListener("blur", () => {
-  eyes.forEach((eye) => {
-    const pupil = eye.querySelector(".pupil");
-    pupil.style.display = "block";
-    pupil.style.transform = "translate(0, 0)"; // reset to center
+// Email input
+emailInput.addEventListener("focus", () => handleFocus(true));
+emailInput.addEventListener("blur", handleBlur);
 
-    // Restore eye shape
-    eye.style.height = "80px";
-    eye.style.borderRadius = "50%";
-  });
-});
+// Password input
+passwordInput.addEventListener("focus", () => handleFocus(false));
+passwordInput.addEventListener("blur", handleBlur);

@@ -193,6 +193,48 @@ html, body {
   100% { transform: rotate(-20deg); }
 }
 
+/* Stop running */
+.cartoon.stop-running .body_cartoon,
+.cartoon.stop-running .legs,
+.cartoon.stop-running .left-arm,
+.cartoon.stop-running .right-arm {
+  animation: none !important; /* stops all animations */
+}
+
+/* Hands to chin */
+.cartoon.email-focused .left-arm {
+  left: 20px;
+  top: 80px;
+  transform: rotate(-90deg);
+}
+
+.cartoon.email-focused .right-arm {
+  right: 20px;
+  top: 80px;
+  transform: rotate(90deg);
+}
+
+/* Hands look away (password focused) */
+.cartoon.password-focused .left-arm {
+  left: -30px;
+  top: 40px;
+  transform: rotate(-60deg);
+}
+
+.cartoon.password-focused .right-arm {
+  right: -30px;
+  top: 40px;
+  transform: rotate(60deg);
+}
+
+
+
+
+
+
+
+
+
 
 
 
